@@ -1,0 +1,32 @@
+{% include "employees/menu.html" %}
+
+{% if employees_list_len %}
+    <h2>Generate attendance report</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form_select }}
+        <input type="submit" value="Submit">
+    </form>
+    {% if error %}
+            <h2>{{ error }} {{ name }}</h2>
+    {% endif %}
+    {% if attendances.0 %}
+        <h2>Attendance report for {{ name }}</h2>
+            <table>
+                <tr>
+                    {% for label in report_fields_names %}
+                    <th>{{ label }}</th>
+                    {% endfor %}
+                </tr>
+                {% for attendance in attendances %}
+                    <tr>
+                        {% for value in attendance %}
+                        <td>{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+    {% endif %}
+{% else %}
+    <h2>Employees list is empty, add the empoyees first</h2>
+{% endif %}

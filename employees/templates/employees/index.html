@@ -1,0 +1,20 @@
+{% include "employees/menu.html" %}
+{% if all_employees_list.0 %}
+    <h2>All Employees</h2>
+    <table>
+        <tr>
+            {% for label in employee_fields_names %}
+            <th>{{ label }}</th>
+            {% endfor %}
+        </tr>
+        {% for employee in all_employees_list %}
+            <tr>
+                {% for value in employee.values %}
+                <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <h2>No employeed added yet</h2>
+{% endif %}

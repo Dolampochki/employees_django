@@ -1,0 +1,29 @@
+{% include "employees/menu.html" %}
+{% if employees_list_len %}
+    <h2>Mark Attendance</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form_select }}
+        <input type="submit" value="Submit">
+    </form>
+    {% if error %}
+            <h2>{{ error }}</h2>
+    {% endif %}
+{% else %}
+    <h2>Employees list is empty, add the empoyees first</h2>
+{% endif %}
+{% if marked_attendance %}
+    <h2>Attendance Added</h2>
+    <table>
+        <tr>
+            {% for label in attendance_fields_names %}
+            <th>{{ label }}</th>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for value in marked_attendance %}
+            <td>{{ value }}</td>
+            {% endfor %}
+        </tr>
+    </table>
+{% endif %}

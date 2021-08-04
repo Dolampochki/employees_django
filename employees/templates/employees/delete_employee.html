@@ -1,0 +1,41 @@
+{% include "employees/menu.html" %}
+{% if employees_list_len %}
+    <h2>Delete Employee manually</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form_select }}
+        <input type="submit" value="Submit">
+    </form>
+    <h2>or from csv file</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form_file }}
+        <input type="submit" value="Submit">
+    </form>
+    {% if error %}
+            <h2>{{ error }}</h2>
+    {% endif %}
+{% else %}
+    <h2>Employees list is empty, add the empoyees first</h2>
+{% endif %}
+{% if deleted_employees.0 %}
+    {% if deleted_employees.1 %}
+        <h2>Deleted Employees</h2>
+    {% else %}
+        <h2>Deleted Employee</h2>
+    {% endif %}
+        <table>
+            <tr>
+                {% for label in employee_fields_names %}
+                <th>{{ label }}</th>
+                {% endfor %}
+            </tr>
+            {% for employee in deleted_employees %}
+                <tr>
+                    {% for value in employee.values %}
+                    <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+{% endif %}
