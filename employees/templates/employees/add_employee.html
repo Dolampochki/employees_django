@@ -1,15 +1,29 @@
-{% include "employees/menu.html" %}
+{# Load the tag library #}
+{% load bootstrap5 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
 <h2>Add Employee manually</h2>
-<form action="" method="post">
+<form action="" method="post" class="form row row-cols-lg-auto align-items-end">
     {% csrf_token %}
-    {{ form_manual }}
-    <input type="submit" value="Submit">
+    {% bootstrap_form form_manual %}
+    {% buttons %}
+      <button type="submit" class="btn btn-primary">
+        Submit
+      </button>
+    {% endbuttons %}
 </form>
 <h2>or from csv file</h2>
-<form action="" method="post">
+<form action="" method="post" class="form row row-cols-lg-auto align-items-end">
     {% csrf_token %}
-    {{ form_file }}
-    <input type="submit" value="Submit">
+    {% bootstrap_form form_file %}
+    {% buttons %}
+      <button type="submit" class="btn btn-primary">
+        Submit
+      </button>
+    {% endbuttons %}
 </form>
 
 {% if added_employees.0 %}
@@ -18,7 +32,7 @@
     {% else %}
         <h2>Added Employee</h2>
     {% endif %}
-        <table>
+        <table class="table">
             <tr>
                 {% for label in employee_fields_names %}
                 <th>{{ label }}</th>

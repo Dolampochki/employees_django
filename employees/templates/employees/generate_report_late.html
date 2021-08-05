@@ -1,10 +1,9 @@
-{% include "employees/menu.html" %}
 {% if error %}
         <h2>{{ error }} late employees</h2>
 {% endif %}
 {% if attendances.0 %}
     <h2>Report for all late employees</h2>
-        <table>
+        <table class="table">
             <tr>
                 {% for label in report_full_fields_names %}
                 <th>{{ label }}</th>

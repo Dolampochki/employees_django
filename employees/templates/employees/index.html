@@ -1,7 +1,6 @@
-{% include "employees/menu.html" %}
 {% if all_employees_list.0 %}
     <h2>All Employees</h2>
-    <table>
+    <table class="table">
         <tr>
             {% for label in employee_fields_names %}
             <th>{{ label }}</th>

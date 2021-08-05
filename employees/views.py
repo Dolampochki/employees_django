@@ -8,10 +8,11 @@ from . import helpers
 
 def index(request):
     all_employees_list = helpers.get_all_employees_list()
-    return render(request, 'employees/index.html', {
+    return render(request, 'employees/.html', {
         'menu_list': consts.menu_list,
         'all_employees_list': all_employees_list,
         'employee_fields_names': consts.employee_fields_names,
+        "template_name": "employees/index.html"
     })
 
 def add_employee(request):
@@ -57,13 +58,14 @@ def add_employee(request):
 
 
     # return HttpResponseRedirect('/')
-    return render(request, 'employees/add_employee.html', {
+    return render(request, 'employees/.html', {
         'form_manual': form_manual,
         'form_file': form_file,
         'menu_list': consts.menu_list,
         'added_employees': added_employees,
         'employee_fields_names': consts.employee_fields_names,
-        'error': error
+        'error': error,
+        'template_name': 'employees/add_employee.html'
         })
 
 def delete_employee(request):
@@ -107,14 +109,15 @@ def delete_employee(request):
                 else:
                     error = consts.error_messages['file_doesnt_exists']
 
-    return render(request, 'employees/delete_employee.html', {
+    return render(request, 'employees/.html', {
         'form_select': form_select,
         'employees_list_len': employees_list_len,
         'form_file': form_file,
         'menu_list': consts.menu_list,
         'deleted_employees': deleted_employees,
         'employee_fields_names': consts.employee_fields_names,
-        'error': error
+        'error': error,
+        'template_name': 'employees/delete_employee.html'
         })
 
 def mark_attendance(request):
@@ -133,13 +136,14 @@ def mark_attendance(request):
         except:
             error = consts.error_messages['something_wrong']
 
-    return render(request, 'employees/mark_attendance.html', {
+    return render(request, 'employees/.html', {
         'form_select': form_select,
         'employees_list_len': employees_list_len,
         'menu_list': consts.menu_list,
         'attendance_fields_names': consts.attendance_fields_names,
         'marked_attendance': marked_attendance,
-        'error': error
+        'error': error,
+        'template_name': 'employees/mark_attendance.html'
         })
 
 def generate_report_employee(request):
@@ -155,14 +159,15 @@ def generate_report_employee(request):
         attendances, name = helpers.get_employee_attendances(form_values['employee_id'])
         if not len(attendances):
             error = consts.error_messages['no_reports']
-    return render(request, 'employees/generate_report_employee.html', {
+    return render(request, 'employees/.html', {
         'form_select': form_select,
         'employees_list_len': employees_list_len,
         'menu_list': consts.menu_list,
         'report_fields_names': consts.report_fields_names,
         'error': error,
         'name': name,
-        'attendances': attendances
+        'attendances': attendances,
+        'template_name': 'employees/generate_report_employee.html'
         })
 
 def current_month_report(request):
@@ -170,12 +175,13 @@ def current_month_report(request):
     attendances, month = helpers.get_current_month_attendances()
     if not len(attendances):
         error = consts.error_messages['no_reports']
-    return render(request, 'employees/current_month_report.html', {
+    return render(request, 'employees/.html', {
         'menu_list': consts.menu_list,
         'report_full_fields_names': consts.report_full_fields_names,
         'error': error,
         'month': month,
-        'attendances': attendances
+        'attendances': attendances,
+        'template_name': 'employees/current_month_report.html'
         })
 
 def generate_report_late(request):
@@ -183,9 +189,10 @@ def generate_report_late(request):
     attendances = helpers.get_late_attendances()
     if not len(attendances):
         error = consts.error_messages['no_reports']
-    return render(request, 'employees/generate_report_late.html', {
+    return render(request, 'employees/.html', {
         'menu_list': consts.menu_list,
         'report_full_fields_names': consts.report_full_fields_names,
         'error': error,
-        'attendances': attendances
+        'attendances': attendances,
+        'template_name': 'employees/generate_report_late.html'
         })

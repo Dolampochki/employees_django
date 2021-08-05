@@ -1,10 +1,19 @@
-{% include "employees/menu.html" %}
+{% load bootstrap5 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
 {% if employees_list_len %}
     <h2>Mark Attendance</h2>
-    <form action="" method="post">
+    <form action="" method="post" class="form row row-cols-lg-auto align-items-end">
         {% csrf_token %}
-        {{ form_select }}
-        <input type="submit" value="Submit">
+        {% bootstrap_form form_select %}
+        {% buttons %}
+          <button type="submit" class="btn btn-primary">
+            Submit
+          </button>
+        {% endbuttons %}
     </form>
     {% if error %}
             <h2>{{ error }}</h2>
@@ -14,7 +23,7 @@
 {% endif %}
 {% if marked_attendance %}
     <h2>Attendance Added</h2>
-    <table>
+    <table class="table">
         <tr>
             {% for label in attendance_fields_names %}
             <th>{{ label }}</th>

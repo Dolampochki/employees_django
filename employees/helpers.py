@@ -20,7 +20,6 @@ def get_real_url_if_file_exists(file_url):
 
 def get_rows_from_csv_file(file, add_to_file):
     rows = []
-    print('get_rows_from_csv_file', rows)
     with open(file) as f:
         reader = csv.reader(f)
         try:
@@ -56,11 +55,9 @@ def return_row_from_object(row_object):
 
 
 def return_unique_rows(rows):
-    print('return_unique_rows')
     rows_unique = []
     for row in rows:
         existing_row = next((sub for sub in rows_unique if sub['employee_id'] == row['employee_id']), None)
-        print(existing_row, row)
         if not existing_row:
             rows_unique.append(row)
     return rows_unique
@@ -146,5 +143,4 @@ def get_late_attendances():
 
 def get_all_employees_list():
     all_employees_list = [return_row_from_object(row) for row in Employee.objects.all()]
-    print(all_employees_list)
     return all_employees_list

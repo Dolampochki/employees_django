@@ -1,0 +1,24 @@
+{# Load the tag library #}
+{% load bootstrap5 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<body>
+    <div class="container">
+        <header>
+            {% include "employees/menu.html" %}
+        </header>
+        <div class="row mt-4">
+            <div class="col">
+                {% for item in menu_list.keys %}
+                    {% if template_name == item %}
+                        {%include template_name %}
+                        {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</body>

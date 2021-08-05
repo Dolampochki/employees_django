@@ -1,18 +1,26 @@
-{% include "employees/menu.html" %}
+{% load bootstrap5 %}
 
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<h2>Generate attendance report</h2>
 {% if employees_list_len %}
-    <h2>Generate attendance report</h2>
-    <form action="" method="post">
+    <form action="" method="post" class="form row row-cols-lg-auto align-items-end">
         {% csrf_token %}
-        {{ form_select }}
-        <input type="submit" value="Submit">
+        {% bootstrap_form form_select %}
+        {% buttons %}
+          <button type="submit" class="btn btn-primary">
+            Submit
+          </button>
+        {% endbuttons %}
     </form>
     {% if error %}
             <h2>{{ error }} {{ name }}</h2>
     {% endif %}
     {% if attendances.0 %}
         <h2>Attendance report for {{ name }}</h2>
-            <table>
+            <table class="table">
                 <tr>
                     {% for label in report_fields_names %}
                     <th>{{ label }}</th>

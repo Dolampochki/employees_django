@@ -1,23 +1,20 @@
-{% include "employees/menu.html" %}
-
-<h2>Print a report for {{ month }}</h2>
+<h2>Attendance report  for {{ month }}</h2>
 {% if error %}
         <h2>{{ error }} {{ month }}</h2>
 {% endif %}
 {% if attendances.0 %}
-    <h2>Attendance report for {{ month }}</h2>
-        <table>
+    <table class="table">
+        <tr>
+            {% for label in report_full_fields_names %}
+            <th>{{ label }}</th>
+            {% endfor %}
+        </tr>
+        {% for attendance in attendances %}
             <tr>
-                {% for label in report_full_fields_names %}
-                <th>{{ label }}</th>
+                {% for value in attendance %}
+                <td>{{ value }}</td>
                 {% endfor %}
             </tr>
-            {% for attendance in attendances %}
-                <tr>
-                    {% for value in attendance %}
-                    <td>{{ value }}</td>
-                    {% endfor %}
-                </tr>
-            {% endfor %}
-        </table>
+        {% endfor %}
+    </table>
 {% endif %}

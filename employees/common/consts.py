@@ -1,33 +1,33 @@
-menu_list = [
-    {
+menu_list = {
+    'employees/index.html': {
         'name': 'Home',
         'page': '/'
     },
-    {
+    'employees/add_employee.html': {
         'name': 'Add employee',
         'page': 'add_employee'
     },
-    {
+    'employees/delete_employee.html': {
         'name': 'Delete employee',
         'page': 'delete_employee'
     },
-    {
+    'employees/mark_attendance.html': {
         'name': 'Mark attendance',
         'page': 'mark_attendance'
     },
-    {
+    'employees/generate_report_employee.html': {
         'name': 'Generate attendance report',
         'page': 'generate_report_employee'
     },
-    {
+    'employees/current_month_report.html': {
         'name': 'Print a report for current month',
         'page': 'current_month_report'
     },
-    {
+    'employees/generate_report_late.html': {
         'name': 'Print a report for all late employees',
         'page': 'generate_report_late'
     }
-]
+}
 
 employee_fields_names = ['Employee ID', 'Name', 'Phone', 'Age']
 attendance_fields_names = ['Employee ID', 'Date', 'Time']
