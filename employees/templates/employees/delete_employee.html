@@ -1,11 +1,7 @@
 {% load bootstrap5 %}
 
-{# Load CSS and JavaScript #}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
-
 {% if employees_list_len %}
-    <h2>Delete Employee manually</h2>
+<h4 class="mb-3">Manually</h4>
     <form action="" method="post" class="form row row-cols-lg-auto align-items-end">
         {% csrf_token %}
         {% bootstrap_form form_select %}
@@ -15,7 +11,7 @@
           </button>
         {% endbuttons %}
     </form>
-    <h2>or from csv file</h2>
+    <h4 class="mb-3">or from csv file</h4>
     <form action="" method="post" class="form row row-cols-lg-auto align-items-end">
         {% csrf_token %}
         {% bootstrap_form form_file %}
@@ -25,18 +21,17 @@
           </button>
         {% endbuttons %}
     </form>
-    {% if error %}
-            <h2>{{ error }}</h2>
-    {% endif %}
 {% else %}
-    <h2>Employees list is empty, add the empoyees first</h2>
+    <div class="alert alert-secondary" role="alert">Employees list is empty, add the empoyees first</div>
 {% endif %}
 {% if deleted_employees.0 %}
-    {% if deleted_employees.1 %}
-        <h2>Deleted Employees</h2>
-    {% else %}
-        <h2>Deleted Employee</h2>
-    {% endif %}
+        <h4 class="mt-5 mb-4">
+            {% if deleted_employees.1 %}
+             Deleted Employees
+            {% else %}
+                Deleted Employee
+            {% endif %}
+        </h4>
         <table class="table">
             <tr>
                 {% for label in employee_fields_names %}

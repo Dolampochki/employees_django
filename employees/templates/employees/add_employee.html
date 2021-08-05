@@ -1,11 +1,6 @@
-{# Load the tag library #}
 {% load bootstrap5 %}
 
-{# Load CSS and JavaScript #}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
-
-<h2>Add Employee manually</h2>
+<h4 class="mb-3">Manually</h4>
 <form action="" method="post" class="form row row-cols-lg-auto align-items-end">
     {% csrf_token %}
     {% bootstrap_form form_manual %}
@@ -15,7 +10,7 @@
       </button>
     {% endbuttons %}
 </form>
-<h2>or from csv file</h2>
+<h4 class="mb-3">or from csv file</h4>
 <form action="" method="post" class="form row row-cols-lg-auto align-items-end">
     {% csrf_token %}
     {% bootstrap_form form_file %}
@@ -27,11 +22,14 @@
 </form>
 
 {% if added_employees.0 %}
-    {% if added_employees.1 %}
-        <h2>Added Employees</h2>
-    {% else %}
-        <h2>Added Employee</h2>
-    {% endif %}
+        <h4 class="mt-5 mb-4">
+
+            {% if added_employees.1 %}
+                Added Employees
+            {% else %}
+                Added Employee
+            {% endif %}
+        </h4>
         <table class="table">
             <tr>
                 {% for label in employee_fields_names %}
@@ -48,6 +46,3 @@
         </table>
 {% endif %}
 
-{% if error %}
-        <h2>{{ error }}</h2>
-{% endif %}

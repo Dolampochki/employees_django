@@ -109,7 +109,7 @@ def get_employee_name(employee_id):
     name = str(employee_id)
     employee = get_employee_by_id(employee_id)
     if employee:
-        name = employee.__dict__['name'] + ' ' + name
+        name = employee.__dict__['name']
     return name
 
 

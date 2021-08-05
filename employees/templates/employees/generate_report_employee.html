@@ -1,10 +1,5 @@
 {% load bootstrap5 %}
 
-{# Load CSS and JavaScript #}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
-
-<h2>Generate attendance report</h2>
 {% if employees_list_len %}
     <form action="" method="post" class="form row row-cols-lg-auto align-items-end">
         {% csrf_token %}
@@ -15,11 +10,8 @@
           </button>
         {% endbuttons %}
     </form>
-    {% if error %}
-            <h2>{{ error }} {{ name }}</h2>
-    {% endif %}
     {% if attendances.0 %}
-        <h2>Attendance report for {{ name }}</h2>
+        <h4 class="mb-3">Attendance report for {{ name }}</h4>
             <table class="table">
                 <tr>
                     {% for label in report_fields_names %}
@@ -36,5 +28,5 @@
             </table>
     {% endif %}
 {% else %}
-    <h2>Employees list is empty, add the empoyees first</h2>
+    <div class="alert alert-secondary" role="alert">Employees list is empty, add the empoyees first</div>
 {% endif %}

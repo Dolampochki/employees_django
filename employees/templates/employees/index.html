@@ -1,5 +1,4 @@
 {% if all_employees_list.0 %}
-    <h2>All Employees</h2>
     <table class="table">
         <tr>
             {% for label in employee_fields_names %}
@@ -15,5 +14,5 @@
         {% endfor %}
     </table>
 {% else %}
-    <h2>No employeed added yet</h2>
+    <div class="alert alert-secondary" role="alert">No employeed added yet</div>
 {% endif %}

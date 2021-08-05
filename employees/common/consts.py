@@ -1,33 +1,40 @@
-menu_list = {
-    'employees/index.html': {
+menu_list = [
+    {
         'name': 'Home',
-        'page': '/'
+        'page': '/',
+        'url': 'employees/index.html'
     },
-    'employees/add_employee.html': {
+    {
         'name': 'Add employee',
-        'page': 'add_employee'
+        'page': 'add_employee',
+        'url': 'employees/add_employee.html'
     },
-    'employees/delete_employee.html': {
+    {
         'name': 'Delete employee',
-        'page': 'delete_employee'
+        'page': 'delete_employee',
+        'url': 'employees/delete_employee.html'
     },
-    'employees/mark_attendance.html': {
+    {
         'name': 'Mark attendance',
-        'page': 'mark_attendance'
+        'page': 'mark_attendance',
+        'url': 'employees/mark_attendance.html'
     },
-    'employees/generate_report_employee.html': {
+    {
         'name': 'Generate attendance report',
-        'page': 'generate_report_employee'
+        'page': 'generate_report_employee',
+        'url': 'employees/generate_report_employee.html'
     },
-    'employees/current_month_report.html': {
+    {
         'name': 'Print a report for current month',
-        'page': 'current_month_report'
+        'page': 'current_month_report',
+        'url': 'employees/current_month_report.html'
     },
-    'employees/generate_report_late.html': {
+    {
         'name': 'Print a report for all late employees',
-        'page': 'generate_report_late'
+        'page': 'generate_report_late',
+        'url': 'employees/generate_report_late.html'
     }
-}
+]
 
 employee_fields_names = ['Employee ID', 'Name', 'Phone', 'Age']
 attendance_fields_names = ['Employee ID', 'Date', 'Time']

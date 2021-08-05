@@ -194,5 +194,6 @@ def generate_report_late(request):
         'report_full_fields_names': consts.report_full_fields_names,
         'error': error,
         'attendances': attendances,
-        'template_name': 'employees/generate_report_late.html'
+        'template_name': 'employees/generate_report_late.html',
+        'name': 'late employees'
         })

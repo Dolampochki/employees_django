@@ -1,6 +1,13 @@
 
-<nav class="navbar navbar-light bg-light">
-    {% for item in menu_list.values %}
-        <a class="nav-link" href="{{ item.page }}">{{ item.name }}</a>
+<nav class="navbar navbar-light bg-light py-0">
+    {% for item in menu_list %}
+        <a class="nav-link{% if item.url == template_name %} active{% endif %}" href="{{ item.page }}">{{ item.name }}</a>
     {% endfor %}
 </nav>
+
+<style>
+    .nav-link.active {
+        background-color: #6c757d;
+        color: #fff;
+    }
+</style>
